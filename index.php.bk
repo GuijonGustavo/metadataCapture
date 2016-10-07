@@ -10,7 +10,7 @@ $db = conectar();
 
 
 	$consulta = pg_query($db, "SELECT * FROM analistas where nom_user='$usr' AND password = '$pw'");
-	if (!$consulta) { exit("Error en al intertar buscar el analista o capturista"); } 
+	if (!$consulta) { exit("Error en al intertar buscar el analista"); } 
 	if(pg_num_rows ($consulta))
 	{
 		if( $fila=pg_fetch_array($consulta) )
@@ -18,7 +18,6 @@ $db = conectar();
 			$uid = $fila['idAnalista'];
 			$pwrd = $fila['password'];
 			$cv_principal = $fila['idAnalista'];
-//			$puesto = $fila['Puesto'];
 			$ultimoAcceso = date("Y-n-j H:i:s"); 
 			$autentificado = 'SI';
 			session_start();
@@ -33,7 +32,6 @@ $db = conectar();
 			echo "<input type=\"hidden\" name=\"idPwrd\" value=\'$pwrd\' />";
 			echo "<input type=\"hidden\" name=\"acceso\" value=\'$ultimoAcceso\' />";
 			echo "<input type=\"hidden\" name=\"autenticado\" value=\'$autentificado\' />";
-//			echo "<input type=\"hidden\" name=\"puesto\" value=\'$puesto\' />";
 			echo "</form>";
 			
 		}

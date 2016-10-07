@@ -9,16 +9,18 @@ $db = conectar();
 	$pw =  ( isset ($_POST['password']))? $_POST['password'] : null ;
 
 
-	$consulta = pg_query($db, "SELECT * FROM analistas where nom_user='$usr' AND password = '$pw'");
-	if (!$consulta) { exit("Error en al intertar buscar el analista o capturista"); } 
-	if(pg_num_rows ($consulta))
+	$consultaAnalista = pg_query($db, "SELECT * FROM analistas where nom_user='$usr' AND password = '$pw'");
+	$consultaCapturista = pg_query($db, "SELECT * FROM capturista where nom_user='$usr' AND password = '$pw'");
+
+	if ($consultaAnalista) 
+	{	
+	if(pg_num_rows ($consultaAnalista))
 	{
-		if( $fila=pg_fetch_array($consulta) )
+		if( $fila=pg_fetch_array($consultaAnalista) )
 		{       
 			$uid = $fila['idAnalista'];
 			$pwrd = $fila['password'];
 			$cv_principal = $fila['idAnalista'];
-//			$puesto = $fila['Puesto'];
 			$ultimoAcceso = date("Y-n-j H:i:s"); 
 			$autentificado = 'SI';
 			session_start();
@@ -33,7 +35,6 @@ $db = conectar();
 			echo "<input type=\"hidden\" name=\"idPwrd\" value=\'$pwrd\' />";
 			echo "<input type=\"hidden\" name=\"acceso\" value=\'$ultimoAcceso\' />";
 			echo "<input type=\"hidden\" name=\"autenticado\" value=\'$autentificado\' />";
-//			echo "<input type=\"hidden\" name=\"puesto\" value=\'$puesto\' />";
 			echo "</form>";
 			
 		}
@@ -42,6 +43,39 @@ $db = conectar();
 		echo "document.formulario.submit();";
 		echo "</script>";
 	}
+	}
+	elseif ($consultaCapturista) {
+	if(pg_num_rows ($consultaCapturista))
+	{
+		if( $fila=pg_fetch_array($consultaCapturista) )
+		{       
+			$uid = $fila['idCapturista'];
+			$pwrd = $fila['password'];
+			$cv_principal = $fila['idCapturista'];
+			$ultimoAcceso = date("Y-n-j H:i:s"); 
+			$autentificado = 'SI';
+			session_start();
+			$_SESSION['autenticado']    = $autentificado;
+			$_SESSION['uid']            = $uid;
+			$_SESSION['passw']          = $pwrd; 
+			$_SESSION["ultimoAcceso"]   = $ultimoAcceso;
+			
+			
+			echo "<form name=\"formulario\" method=\"post\" action=\"MenuCapturista.php\">";
+			echo "<input type=\"hidden\" name=\"idUsr\" value=\'$uid \' />";
+			echo "<input type=\"hidden\" name=\"idPwrd\" value=\'$pwrd\' />";
+			echo "<input type=\"hidden\" name=\"acceso\" value=\'$ultimoAcceso\' />";
+			echo "<input type=\"hidden\" name=\"autenticado\" value=\'$autentificado\' />";
+			echo "</form>";
+			
+		}
+		
+		echo "<script type=\"text/javascript\">"; 
+		echo "document.formulario.submit();";
+		echo "</script>";
+	}
+	}
+
 
 ?>
 

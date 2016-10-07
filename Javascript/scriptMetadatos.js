@@ -853,6 +853,32 @@ $(document).ready(function(){
 		});
 		
 		
+		$( "#dialog_capturista" ).dialog
+		({
+			autoOpen: false,
+			height: 350,
+			width: 550,
+			modal: true,
+			buttons: 
+			{
+				"Registrar": function() 
+				{
+					var bValid = true;
+					allFields.removeClass( "ui-state-error" );
+
+					bValid = bValid && checkLength( name, "username", 5);
+					bValid = bValid && checkRegexp( name, /^[a-z] || [A-Z] ([0-9a-z_]) +$/i, "El nombre no debe contener carácteres ." );
+					
+					if ( bValid ) 	{ 	$( "#formCapturista" ).submit() }
+				},
+				
+				"Cancelar": function() {	$( this ).dialog( "close" );	}
+			},
+			
+			close: function() {		allFields.val( "" ).removeClass( "ui-state-error" );	}
+		});
+		
+	
 		
 		
 		
@@ -901,6 +927,7 @@ $(document).ready(function(){
 		
 
 		$( "#nuevo" ).click(function() {	$( "#dialog_nuevo" ).dialog( "open" );	});
+		$( "#capturista" ).click(function() {	$( "#dialog_capturista" ).dialog( "open" );	});
 		$( "#duplica" ).click(function() {	$( "#dialog_duplica" ).dialog( "open" );	});
 		
 		$( "#cerrarSesion" ).click(function() {	$( "#cerrar_sesion" ).dialog( "open" );	});
