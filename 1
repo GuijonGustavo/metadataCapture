@@ -1,11 +1,4 @@
 <?php 
-
-require_once('FirePHPCore/FirePHP.class.php');
-ob_start();
-
-$fireephp = FirePHP::getInstance(TRUE);
-$fireephp -> error('PHP ESTA FUNCIONANDO', 'info');
-
  session_start();
 if ( ! ($_SESSION['autenticado'] == 'SI' && isset($_SESSION['uid'])) )
 {
@@ -25,9 +18,6 @@ else
 	header('Content-Type: text/html; charset=utf-8'); 
 	require('PHP/funciones.php');
 	$db = conectar();
-$fireeiphp = FirePHP::getInstance(TRUE);
-$fireeiphp -> trace('Trace');
-$fireeiphp -> log($db, 'db');
 	if ($db)
 	{
 		$iden = $_SESSION['uid'];
@@ -37,6 +27,9 @@ $fireeiphp -> log($db, 'db');
 		$ahora = date("Y-n-j H:i:s");  
        	$tiempo_transcurrido = (strtotime($ahora)-strtotime($fechaGuardada)); 
 		
+                $userCapturista = "";
+                $passCapturista = "";
+                $correoCapturista = "";
 
 		
 		
@@ -44,9 +37,6 @@ $fireeiphp -> log($db, 'db');
 		$result = pg_query($db, $sql); 
 		if (!$result) { exit("Error en la consulta"); } 
 		
-$fireeiphp = FirePHP::getInstance(TRUE);
-$fireeiphp -> trace('Trace');
-$fireeiphp -> log($result, 'result');
 		if( $fila = pg_fetch_array($result) )
 		$cv_principal = $fila['idAnalista']; 	
 		$nombreUsuario = $fila['Persona'];
@@ -354,6 +344,7 @@ function vectores(nameMetadato) {
             	<input type="button" id="nuevo" value="Nuevo Registro">
                 <input type="button" id="duplica" value="Duplicar Registro">
                 <input type="button" id="cerrarSesion" value="Cerrar Sesi&oacute;n">
+            	<input type="button" id="capturista" value="Registrar Capturista">
 	      	</div> 
           	<div id="lf2" class="accordion">
 	        	<p><img src="CSS/images/vineta.png"> Seleccione el registro a editar o revisar</p>    
@@ -365,7 +356,6 @@ function vectores(nameMetadato) {
                   <input type="button" onclick="cambiar.accion (3)" value="Restricciones">
                   <input type="button" onclick="cambiar.accion (4)" value="Palabras Clave">
                   <input type="button" onclick="cambiar.accion (5)" value="Ambiente de Trabajo">
-                 <input type="button" onclick="cambiar.accion (12)" value="Registro de Capturista">
 				</div>
 			  <h1>Calidad de los Datos</h1>
 				<div style="display:none;">
@@ -375,6 +365,7 @@ function vectores(nameMetadato) {
 			  <h1> Informaci&oacute;n Espacial y Atributos</h1>
 				<div style="display:none;">
                 	
+                 <!-- <input type="button" onclick="cambiar.accion (8)" value="Datos  Espaciales">-->
                   <input type="button" onclick="cambiar.accion (9)" value="Datos  Espaciales">
                   <input type="button" onclick="cambiar.accion (10)" value="Atributos">
                   <?php if ($cv_principal == 28){?>
@@ -679,41 +670,6 @@ function vectores(nameMetadato) {
                     </form>
                 </div>
              </div>
-
-             <div id="div12"  class="element">
-             	<div id="contenido">
-                    <form name="datos" method="POST" >
-                        <input type = "submit" value = "Guardar"  id="RegistroCapturista" onclick = "this.form.action = 'guardar.php?hoja=RegistroCapturista&id=<?php echo $id;?>&cv_principal=<?php echo $cv_principal;?>'"/>
-							<table width="869">
-                            	<tr >
-                                   	<td width="200">&nbsp;</td>
-                                    <td width="657">&nbsp;</td>
-                        		</tr>
-                                <tr >
-                                   <td>Nombre</td>
-                                   <td><input type="text" name="userCapturista" class="extenso" />
-
-</td>
-                                 </tr>
-                                 <tr >
-                                   <td>Pass</td>
-                                   <td>
-
-                                   <td><input type="text" name="passCapturista" class="extenso" />
-</td>
-                                 </tr>
-                                 <tr >
-                                   <td>Correo</td>
-                                   <td>
-
-                                   <td><input type="text" name="correoCapturista" class="extenso" />
-</td>
-                                 </tr>
-                          	</table>
-                    </form>
-                </div>
-             </div>
-
              <div id="div6"  class="element">
              	<div id="contenido">
                     <form name="datos" method="POST" >
@@ -1055,6 +1011,20 @@ function vectores(nameMetadato) {
                         <input type="hidden"  name="id_general" id="id_general" value="<?php echo $id;?>"/>
                 </form>
             </div>
+
+             <div id="dialog_capturista"  title="Crear nuevo Registro de Capturista">
+                <form name="capturista" method="post" action="capturista.php" id="formCapturista">
+                <p class="validateTips">usuario:</p>
+                <input type="text" name="userCapturista"  />
+                <p class="validateTips">Password:</p>
+                <input type="text" name="passCapturista" />
+                <p class="validateTips">Correo:</p>
+                <input type="email" name="correoCapturista" />
+<!--                        <input type="hidden" name="cv_principal" id="cv_principal" value="<?php echo $cv_principal;?>"/> 
+                        <input type="hidden"  name="id_general" id="id_general" value="<?php echo $id;?>"/>-->
+                </form>
+            </div>   
+            
 
             <div id="dialog_duplica"  title="Duplicar Metadato">
                 <p class="validateTips">T&iacute;tulo del Mapa:</p>

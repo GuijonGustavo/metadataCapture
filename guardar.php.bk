@@ -176,32 +176,7 @@ else
 				$sql_div5 =  pg_query($db, $sqlupd5);
 				if (!$sql_div5) { exit("Error al actualizar la información del div 5"); }
 			} break;
-
-	
-			case "RegistroCapturista":
-			{
-			  //<<<<<<<<<<<<<< ACTUALIZA LOS DATOS DEL DIV 12 >>>>>>>>>>>>>
-	
-			$correoCapturista = $_POST['correoCapturista'];
-			$userCapturista = $_POST['userCapturista'] ;
-			$passCapturista = $_POST['passCapturista'];
-
-
-			$sqlupd  = "INSERT INTO analistas (mail, nom_user, password) VALUES ( ";
-			$sqlupd .= " '".$correoCapturista."' , ";
-			$sqlupd .= " '".$userCapturista."',  "; 
-			$sqlupd .= " '".$passCapturista."'  "; 
-			$sqlupd .= " ) ";
-			$sql =  pg_query($db, $sqlupd);
-			if (!$sql) { exit("Error al insertar la informacion  de atributos en el div 12"); }
 			
-			} break;
-			
-
-
-
-
-
 			case "calidadDeDatos":
 			{
 			  //<<<<<<<<<<<<<< ACTUALIZA LOS DATOS DEL DIV 6 >>>>>>>>>>>>>
