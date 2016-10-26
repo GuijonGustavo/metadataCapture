@@ -182,15 +182,24 @@ else
 			{
 			  //<<<<<<<<<<<<<< ACTUALIZA LOS DATOS DEL DIV 12 >>>>>>>>>>>>>
 	
+			$nombreCapturista = $_POST['nombreCapturista'];
+			$puestoCapturista = 'capturista'; 
+			$telCapturista = $_POST['telCapturista'];
 			$correoCapturista = $_POST['correoCapturista'];
 			$userCapturista = $_POST['userCapturista'] ;
 			$passCapturista = $_POST['passCapturista'];
+			$activoCapturista = $_POST['activoCapturista'];
+			$activoCapturista = (int) $activoCapturista;
 
 
-			$sqlupd  = "INSERT INTO analistas (mail, nom_user, password) VALUES ( ";
+			$sqlupd  = 'INSERT INTO analistas ("Persona","Puesto","Telefono", mail, nom_user, password, activo) VALUES ( ';
+			$sqlupd .= " '".$nombreCapturista."' , ";
+			$sqlupd .= " '".$puestoCapturista."' , ";
+			$sqlupd .= " '".$telCapturista."' , ";
 			$sqlupd .= " '".$correoCapturista."' , ";
 			$sqlupd .= " '".$userCapturista."',  "; 
-			$sqlupd .= " '".$passCapturista."'  "; 
+			$sqlupd .= " '".$passCapturista."',  "; 
+			$sqlupd .= "".$activoCapturista.""  ; 
 			$sqlupd .= " ) ";
 			$sql =  pg_query($db, $sqlupd);
 			if (!$sql) { exit("Error al insertar la informacion  de atributos en el div 12"); }

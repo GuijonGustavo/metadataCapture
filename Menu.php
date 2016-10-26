@@ -691,24 +691,35 @@ function vectores(nameMetadato) {
                         		</tr>
                                 <tr >
                                    <td>Nombre</td>
+                                   <td><input type="text" name="nombreCapturista" class="extenso" />
+</td>
+                                 </tr>
+                                <tr >
+                                   <td>Login</td>
                                    <td><input type="text" name="userCapturista" class="extenso" />
-
 </td>
                                  </tr>
                                  <tr >
-                                   <td>Pass</td>
-                                   <td>
-
+                                   <td>Password</td>
                                    <td><input type="text" name="passCapturista" class="extenso" />
 </td>
                                  </tr>
                                  <tr >
                                    <td>Correo</td>
-                                   <td>
-
                                    <td><input type="text" name="correoCapturista" class="extenso" />
 </td>
                                  </tr>
+                                <tr >
+                                   <td>Teléfono</td>
+                                   <td><input type="text" name="telCapturista" class="extenso" />
+</td>
+                                 </tr>
+                                <tr><td>Activo</td>
+                                    <td><select name="activoCapturista">
+                                    <option value="1">1</option>
+                                    <option value="0">0</option>
+                                    </select></td>
+                                </tr>
                           	</table>
                     </form>
                 </div>
