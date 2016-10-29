@@ -3,8 +3,9 @@
 require_once('FirePHPCore/FirePHP.class.php');
 ob_start();
 
-$fireephp = FirePHP::getInstance(TRUE);
-$fireephp -> error('PHP ESTA FUNCIONANDO', 'info');
+//$fireephp = FirePHP::getInstance(TRUE);
+//$fireephp -> error('PHP ESTA FUNCIONANDO', 'info');
+//$fireeiphp -> log($db, 'db');
 
  session_start();
 if ( ! ($_SESSION['autenticado'] == 'SI' && isset($_SESSION['uid'])) )
@@ -25,9 +26,6 @@ else
 	header('Content-Type: text/html; charset=utf-8'); 
 	require('PHP/funciones.php');
 	$db = conectar();
-$fireeiphp = FirePHP::getInstance(TRUE);
-$fireeiphp -> trace('Trace');
-$fireeiphp -> log($db, 'db');
 	if ($db)
 	{
 		$iden = $_SESSION['uid'];
@@ -44,13 +42,11 @@ $fireeiphp -> log($db, 'db');
 		$result = pg_query($db, $sql); 
 		if (!$result) { exit("Error en la consulta"); } 
 		
-$fireeiphp = FirePHP::getInstance(TRUE);
-$fireeiphp -> trace('Trace');
-$fireeiphp -> log($result, 'result');
 		if( $fila = pg_fetch_array($result) )
 		$cv_principal = $fila['idAnalista']; 	
 		$nombreUsuario = $fila['Persona'];
-                $username = $fila['nom_user']; 	
+                $username = $fila['nom_user']; 
+                $puesto = $fila['Puesto'];        
 
 		
 		if (empty($_GET["id"])) { $id=0;} 
@@ -59,6 +55,7 @@ $fireeiphp -> log($result, 'result');
 	 
 
 ?>
+
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd"> 
 <html >
@@ -334,8 +331,56 @@ function vectores(nameMetadato) {
 }
 </script>
 
+<!--<script>
+//        var consulta = "<?php echo $puesto;?>";
+
+//switch (consulta) {
+//case "capturista":
+//        $("#capturista").show();
+//        $("#administrador").hide();
+//        $("#analista").hide();
+        break
+
+//case "administrador":
+//        $("#capturista").hide();
+//        $("#administrador").show();
+//        $("#analista").hide();
+        break
+
+//    }
+ //       if (consulta == "analista") {
+//        $("#capturista").hide();
+//        $("#administrador").hide();
+//        $("#analista").show();
+//    }
+
+
+</script> -->
+
+
+
+
 </head>
 <body>
+<!--        var consulta = "<?php echo $puesto; ?>";
+<button class="mostrar">Mostrar contenido</button>
+<button class="ocultar">Ocultar contenido</button>
+ 
+<p style="display: none">Contenido de ejemplo</p>
+        <script>
+            $(".mostrar").click(function () {
+                  $("#capturista").show();
+                      });
+ 
+    $(".ocultar").click(function () {
+    $("#capturista").hide();
+    });
+    </script> 
+
+
+
+<p id="capturista">Capturista</p>
+<p id="administrador">Administrador</p> -->
 	<div id="hd">
     	<table>
           <tr>
@@ -343,6 +388,8 @@ function vectores(nameMetadato) {
             <td><span>
 			  <p class="txtN1"> Direcci&oacute;n General de Geom&aacute;tica</p>
               <p class="txtN2">Subcoordinaci&oacute;n de Sistemas de Informaci&oacute;n Geogr&aacute;fica</p>
+
+
 			</span></td>
           </tr>
         </table>
@@ -364,8 +411,8 @@ function vectores(nameMetadato) {
                   <!--<input type="button" onclick="cambiar.accion (2)" value="Ubicaci&oacute;n Geogr&aacute;fica">-->
                   <input type="button" onclick="cambiar.accion (3)" value="Restricciones">
                   <input type="button" onclick="cambiar.accion (4)" value="Palabras Clave">
-                  <input type="button" onclick="cambiar.accion (5)" value="Ambiente de Trabajo">
-                 <input type="button" onclick="cambiar.accion (12)" value="Registro de Capturista">
+                  <input type="button" onclick="cambiar.accion (6)" value="Ambiente de Trabajo">
+                                 <?php if ($puesto == "administrador" || $puesto == "analista") {echo '<input type="button" onclick="cambiar.accion (12)" value="Registro de Capturista">';}; ?>
 				</div>
 			  <h1>Calidad de los Datos</h1>
 				<div style="display:none;">
@@ -681,7 +728,12 @@ function vectores(nameMetadato) {
              </div>
 
              <div id="div12"  class="element">
-             	<div id="contenido">
+
+                <div id="contenido">
+
+
+
+
                     <form name="datos" method="POST" >
                         <input type = "submit" value = "Guardar"  id="RegistroCapturista" onclick = "this.form.action = 'guardar.php?hoja=RegistroCapturista&id=<?php echo $id;?>&cv_principal=<?php echo $cv_principal;?>'"/>
 							<table width="869">
@@ -705,8 +757,8 @@ function vectores(nameMetadato) {
 </td>
                                  </tr>
                                  <tr >
-                                   <td>Correo</td>
-                                   <td><input type="text" name="correoCapturista" class="extenso" />
+                                   <td>Correo</td>       <td><input type="text" name="correoCapturista" class="extenso" />
+
 </td>
                                  </tr>
                                 <tr >
@@ -722,7 +774,9 @@ function vectores(nameMetadato) {
                                 </tr>
                           	</table>
                     </form>
-                </div>
+</div>
+
+
              </div>
 
              <div id="div6"  class="element">
