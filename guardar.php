@@ -183,7 +183,7 @@ else
 			  //<<<<<<<<<<<<<< ACTUALIZA LOS DATOS DEL DIV 12 >>>>>>>>>>>>>
 	
 			$nombreCapturista = $_POST['nombreCapturista'];
-			$puestoCapturista = 'capturista'; 
+			$puestoCapturista = $_POST['puestoCapturista']; 
 			$telCapturista = $_POST['telCapturista'];
 			$correoCapturista = $_POST['correoCapturista'];
 			$userCapturista = $_POST['userCapturista'] ;
@@ -192,16 +192,16 @@ else
 			$activoCapturista = (int) $activoCapturista;
 
 
-			$sqlupd  = 'INSERT INTO analistas ("Persona","Puesto","Telefono", mail, nom_user, password, activo) VALUES ( ';
-			$sqlupd .= " '".$nombreCapturista."' , ";
-			$sqlupd .= " '".$puestoCapturista."' , ";
-			$sqlupd .= " '".$telCapturista."' , ";
-			$sqlupd .= " '".$correoCapturista."' , ";
-			$sqlupd .= " '".$userCapturista."',  "; 
-			$sqlupd .= " '".$passCapturista."',  "; 
-			$sqlupd .= "".$activoCapturista.""  ; 
-			$sqlupd .= " ) ";
-			$sql =  pg_query($db, $sqlupd);
+			$sqlupd_c  = 'INSERT INTO analistas ("Persona","Puesto","Telefono", mail, nom_user, password, activo) VALUES ( ';
+			$sqlupd_c .= " '".$nombreCapturista."' , ";
+			$sqlupd_c .= " '".$puestoCapturista."' , ";
+			$sqlupd_c .= " '".$telCapturista."' , ";
+			$sqlupd_c .= " '".$correoCapturista."' , ";
+			$sqlupd_c .= " '".$userCapturista."',  "; 
+			$sqlupd_c .= " '".$passCapturista."',  "; 
+			$sqlupd_c .= "".$activoCapturista.""  ; 
+			$sqlupd_c .= " ) ";
+			$sql =  pg_query($db, $sqlupd_c);
 			if (!$sql) { exit("Error al insertar la informacion  de atributos en el div 12"); }
 			
 			} break;
@@ -913,7 +913,10 @@ else
 		}
 		
 
-		$mensajesAll = "El Metadato a sido actualizado.";
+			if ($sqlupd_c != "" ) {
+				$mensajesAll = "El registro ha sido actualizado.";} 
+			else {	$mensajesAll = "El Metadato a sido actualizado.";}
+
 		if ( $mensajesAll != "" ) 
 		{
 			echo "<form id=\"frm_guardar\" name=\"frm_guardar\" method=\"post\" action=\"Menu.php?id=$record_id\">";

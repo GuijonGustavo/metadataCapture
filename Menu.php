@@ -331,56 +331,11 @@ function vectores(nameMetadato) {
 }
 </script>
 
-<!--<script>
-//        var consulta = "<?php echo $puesto;?>";
-
-//switch (consulta) {
-//case "capturista":
-//        $("#capturista").show();
-//        $("#administrador").hide();
-//        $("#analista").hide();
-        break
-
-//case "administrador":
-//        $("#capturista").hide();
-//        $("#administrador").show();
-//        $("#analista").hide();
-        break
-
-//    }
- //       if (consulta == "analista") {
-//        $("#capturista").hide();
-//        $("#administrador").hide();
-//        $("#analista").show();
-//    }
-
-
-</script> -->
-
-
 
 
 </head>
 <body>
-<!--        var consulta = "<?php echo $puesto; ?>";
-<button class="mostrar">Mostrar contenido</button>
-<button class="ocultar">Ocultar contenido</button>
- 
-<p style="display: none">Contenido de ejemplo</p>
-        <script>
-            $(".mostrar").click(function () {
-                  $("#capturista").show();
-                      });
- 
-    $(".ocultar").click(function () {
-    $("#capturista").hide();
-    });
-    </script> 
 
-
-
-<p id="capturista">Capturista</p>
-<p id="administrador">Administrador</p> -->
 	<div id="hd">
     	<table>
           <tr>
@@ -746,6 +701,19 @@ function vectores(nameMetadato) {
                                    <td><input type="text" name="nombreCapturista" class="extenso" />
 </td>
                                  </tr>
+                                <tr><td>Puesto</td>
+                                    <td><select name="puestoCapturista">
+                                 <?php if ($puesto == "administrador") {echo 
+                                 '<option value="capturista">Capturista</option>
+                                 <option value="analista">Analista</option>';} 
+                                       if ($puesto == "analista") {echo 
+                                 '<option value="capturista">Capturista</option>';} ?>
+                                    </select></td>
+                                </tr>
+ 
+
+
+
                                 <tr >
                                    <td>Login</td>
                                    <td><input type="text" name="userCapturista" class="extenso" />
