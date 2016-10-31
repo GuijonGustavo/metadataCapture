@@ -704,7 +704,8 @@ function vectores(nameMetadato) {
                                 <tr><td>Puesto</td>
                                     <td><select name="puestoCapturista">
                                  <?php if ($puesto == "administrador") {echo 
-                                 '<option value="capturista">Capturista</option>
+                                 '<option value="administrador">Administrador</option>
+                                 <option value="capturista">Capturista</option>
                                  <option value="analista">Analista</option>';} 
                                        if ($puesto == "analista") {echo 
                                  '<option value="capturista">Capturista</option>';} ?>
