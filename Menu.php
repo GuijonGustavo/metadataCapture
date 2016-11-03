@@ -3,10 +3,6 @@
 require_once('FirePHPCore/FirePHP.class.php');
 ob_start();
 
-//$fireephp = FirePHP::getInstance(TRUE);
-//$fireephp -> error('PHP ESTA FUNCIONANDO', 'info');
-//$fireeiphp -> log($db, 'db');
-
  session_start();
 if ( ! ($_SESSION['autenticado'] == 'SI' && isset($_SESSION['uid'])) )
 {
@@ -133,49 +129,10 @@ $(document).ready(function(){
 				
 				
 				$("#contenido").html(output );
-
-//$('#selectMetadato').append(
-//    $('<option />')
-//        .text('Select a city / town in Sweden')
-//        .val(''),
-//    $('<option />')
-//        .text('Melbourne')
-//        .val('Melbourne')
-//);
-
-					//$("#respuesta").html("<a>nombre: " + result.vector.name+ "numero de linea: "+result.vector.linea);
-					//alert(result.message);
 				});
 
-
-			//$.ajax({
-//				 url: 'subir.php', 
-//				 type: 'POST', 
-//				 data: formData,
-//				 cache: false,
-//				 contentType: false,
-//				 processData: false,
-//				 //beforeSend: function(){
-////                	message = $("<span class='before'>Subiendo la imagen, por favor espere...</span>");
-////                	showMessage(message)        
-////            	 	},
-//				 success: function(data){
-//				 		$("#selectMetadato").html(data);
-//						message = $("<span class='success'>La imagen ha subido correctamente.</span>");
-//						showMessage(message);
-//						//if(isImage(fileExtension))
-////						{
-////							$(".showImage").html("<img src='files/"+data+"' />");
-////						}
-//					},
-//				//si ha ocurrido un error
-//				//error: function(){
-////					message = $("<span class='error'>Ha ocurrido un error.</span>");
-////					showMessage(message);
-////				}
-//			});
 			
-   
+  
 		}
 	});
 	
@@ -267,13 +224,7 @@ function archivosTif(nameTif) {
 				$("#r_pixel_Y").val(result.tifPixelY);
 				$("#r_COOR_X").val(result.tifRasterX);
 				$("#r_COOR_Y").val(result.tifRasterY);
-//				
-//				if((result.geometry == 'Point') || (result.geometry =='Polygon') || (result.geometry =='Line String'))
-//				{
-//					$("#c_estructura_dato").val("Vector");
-//				}
 				
-			//	alert((result.geometry).length);
 				
 			
 		});
@@ -292,16 +243,9 @@ function vectores(nameMetadato) {
 		$.ajax({
 		data: dataString,
 		url: 'subir2.php', 
-		//global : false,
 		type: "GET",
 		dataType : "json",
-		//async : false,
-		//success : function(res){
-		//var data_product = JSON.parse(res);
-		//alert(res);
-		//document.getElementById('c_oeste').innerHTML = data_product[0].nameLayer;
-		//}
-		}).done(function(result) {
+				}).done(function(result) {
 				$("#c_datum").val(result.datumName);
 				$("#c_tipo_dato").val(result.geometry);
 				$("#c_total_datos").val(result.count);
@@ -367,7 +311,7 @@ function vectores(nameMetadato) {
                   <input type="button" onclick="cambiar.accion (3)" value="Restricciones">
                   <input type="button" onclick="cambiar.accion (4)" value="Palabras Clave">
                   <input type="button" onclick="cambiar.accion (6)" value="Ambiente de Trabajo">
-                                 <?php if ($puesto == "administrador" || $puesto == "analista") {echo '<input type="button" onclick="cambiar.accion (12)" value="Registro de Capturista">';}; ?>
+                                 <?php if ($puesto == "administrador" || $puesto == "analista") {echo '<input type="button" onclick="cambiar.accion (12)" value="Registro de Colaborador">';}; ?>
 				</div>
 			  <h1>Calidad de los Datos</h1>
 				<div style="display:none;">

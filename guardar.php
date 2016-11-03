@@ -914,7 +914,7 @@ else
 		
 
 			if ($sqlupd_c != "" ) {
-				$mensajesAll = "El registro ha sido actualizado.";} 
+				$mensajesAll = "Se ha registrado un colaborador.";} 
 			else {	$mensajesAll = "El Metadato a sido actualizado.";}
 
 		if ( $mensajesAll != "" ) 
