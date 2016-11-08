@@ -311,7 +311,18 @@ function vectores(nameMetadato) {
                   <input type="button" onclick="cambiar.accion (3)" value="Restricciones">
                   <input type="button" onclick="cambiar.accion (4)" value="Palabras Clave">
                   <input type="button" onclick="cambiar.accion (6)" value="Ambiente de Trabajo">
-                                 <?php if ($puesto == "administrador" || $puesto == "analista") {echo '<input type="button" onclick="cambiar.accion (12)" value="Registro de Colaborador">';}; ?>
+                                 <?php if ($puesto == "administrador" || $puesto == "analista") {echo 
+				'<input type="button" onclick="cambiar.accion (12)" value="Registro de Colaborador">'
+				;}; ?>   
+		
+                                 <?php if ($puesto == "administrador" || $puesto == "analista") {echo 
+				'<select name="validacionAnalista" size="1" style="width:250px; text-align:center";>
+				<option value="aprobarMetadato"><p style="text-align:center">Aprobar Metadato</p></option>
+				<option value="editar">Editar</option>
+				<option value="aprobado">Aprobado</option>
+				</select>';}; 
+				?>   
+				
 				</div>
 			  <h1>Calidad de los Datos</h1>
 				<div style="display:none;">

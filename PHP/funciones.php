@@ -43,7 +43,7 @@ function seleccion($id, $cv_principal )
 		else 
 		{   
 //			echo "<select name= \"seleccion\" style=\"width:250px\" id= \"seleccion\" onchange=\"location.href='../metadatos_c/Menu.php?id=' + this.value\">";
-			echo "<select name= \"seleccion\" style=\"width:250px\" id= \"seleccion\" onchange=\"location.href='../Menu.php?id=' + this.value\">";
+			echo "<select name= \"seleccion\" style=\"width:250px\" id= \"seleccion\" onchange=\"location.href='../metadataCapture/Menu.php?id=' + this.value\">";
 			echo "<option value=\"0\">Seleccione el Metadato</option>";
 			while ($fila = pg_fetch_object($result))
 			{ 
