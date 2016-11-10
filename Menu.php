@@ -275,7 +275,20 @@ function vectores(nameMetadato) {
 }
 </script>
 
+<script type="text/javascript">
 
+function habilitar(obj) {
+  var hab;
+//  frm=obj.id;
+  num=obj.selectedIndex;
+  if (num==1) hab=false;
+  else if (num==2) hab=true;
+  document.getElementById('c_nombre').disabled=hab;
+  document.getElementById('tabla_1').disabled=hab;
+  document.getElementById('autores').disabled=hab;
+  document.getElementsByName('datos').disabled=hab;
+}
+</script>
 
 </head>
 <body>
@@ -287,7 +300,7 @@ function vectores(nameMetadato) {
             <td><span>
 			  <p class="txtN1"> Direcci&oacute;n General de Geom&aacute;tica</p>
               <p class="txtN2">Subcoordinaci&oacute;n de Sistemas de Informaci&oacute;n Geogr&aacute;fica</p>
-
+<?php echo $id;?>
 
 			</span></td>
           </tr>
@@ -316,12 +329,16 @@ function vectores(nameMetadato) {
 				;}; ?>   
 		
                                  <?php if ($puesto == "administrador" || $puesto == "analista") {echo 
-				'<select name="validacionAnalista" size="1" style="width:250px; text-align:center";>
+				'<input type="button" onclick="cambiar.accion (13)" value="Aprobar Metadato">'
+				;}; ?>  
+ 
+<!--                                 <?php if ($puesto == "administrador" || $puesto == "analista") {echo 
+				'<select name="validacionAnalista" size="1" style="width:250px; text-align:center"; onchange="habilitar(this)">
 				<option value="aprobarMetadato"><p style="text-align:center">Aprobar Metadato</p></option>
 				<option value="editar">Editar</option>
 				<option value="aprobado">Aprobado</option>
 				</select>';}; 
-				?>   
+				?>   -->
 				
 				</div>
 			  <h1>Calidad de los Datos</h1>
@@ -346,9 +363,9 @@ function vectores(nameMetadato) {
          	 <div style="display:block " id="div1" class="element">
              	<div id="contenido">
                     <form name="datos" method="POST" >
-                        <input type = "submit" value = "Guardar"  id="datos" onclick = "this.form.action = 'guardar.php?hoja=datos&id=<?php echo $id;?>&cv_principal=<?php echo $cv_principal;?>'"/>
+                        <input type = "submit" value = "Guardar" id="datos" onclick = "this.form.action = 'guardar.php?hoja=datos&id=<?php echo $id;?>&cv_principal=<?php echo $cv_principal;?>'" />
                       	<div id="autores">Autores: 		<?php  global $id;  tabla("x_origin","30px",$id , $cv_principal,"Autores"); ?>  </div><br />
-							<table width="869">
+							<table id="tabla_1" width="869">
                             	<tr> 
                                 	<td width="180">&nbsp;</td>
 									<td colspan="5" align="center"> 
@@ -699,9 +716,60 @@ function vectores(nameMetadato) {
                           	</table>
                     </form>
 </div>
+</div>
 
 
-             </div>
+             <div id="div13"  class="element">
+
+                <div id="contenido">
+
+
+
+
+                    <form name="datos" method="POST" >
+                        <input type = "submit" value = "Guardar"  id="RegistroCapturista" onclick = "this.form.action = 'guardar.php?hoja=RegistroCapturista&id=<?php echo $id;?>&cv_principal=<?php echo $cv_principal;?>'"/>
+							<table width="869">
+                            	<tr >
+                                   	<td width="200">&nbsp;</td>
+                                    <td width="657">&nbsp;</td>
+                        		</tr>
+                                <tr >
+                                   <td>Responsable:</td>
+                                   <td><?php echo $nombreUsuario; ?></td>
+                                 </tr>
+                                <tr><td>Puesto:</td>
+                                   <td><?php echo $puesto;?></td>
+                                </tr>
+
+                                <tr><td>Fecha:</td>
+                                   <td><?php $time = time(); echo date("d-m-Y (H:i:s)", $time); ?></td>
+                                </tr>
+
+                                <tr><td>Aprobar Metadato:</td>
+                                    <td><select name="activoCapturista">
+                                    <option value="1">Sí</option>
+                                    <option value="0">No</option>
+                                    </select></td>
+                                </tr>
+                          	</table>
+                    </form>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
              <div id="div6"  class="element">
              	<div id="contenido">
