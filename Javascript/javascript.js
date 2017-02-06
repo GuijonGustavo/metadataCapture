@@ -8,7 +8,7 @@ var cambiar =
    	ocultar: function()
 	{ 
 		var divs = document.getElementsByTagName('div');
-		for(i=1; i<14;i++)
+		for(i=1; i<15;i++)
 		{ 
 			if (document.getElementById("div"+i).style.display == "block")
 			{

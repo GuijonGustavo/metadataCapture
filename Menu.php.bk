@@ -1,5 +1,6 @@
 <?php 
 
+require_once('FirePHPCore/FirePHP.class.php');
 ob_start();
 
  session_start();
@@ -30,6 +31,9 @@ else
 		$ahora = date("Y-n-j H:i:s");  
        	$tiempo_transcurrido = (strtotime($ahora)-strtotime($fechaGuardada)); 
 		
+
+		
+		
 		$sql = 'SELECT * FROM analistas where "idAnalista"='.$iden.';';
 		$result = pg_query($db, $sql); 
 		if (!$result) { exit("Error en la consulta"); } 
@@ -39,6 +43,7 @@ else
 		$nombreUsuario = $fila['Persona'];
                 $username = $fila['nom_user']; 
                 $puesto = $fila['Puesto'];        
+
 		
 		if (empty($_GET["id"])) { $id=0;} 
 		else { $id = $_GET["id"];}
@@ -295,8 +300,8 @@ function habilitar(obj) {
             <td><span>
 			  <p class="txtN1"> Direcci&oacute;n General de Geom&aacute;tica</p>
               <p class="txtN2">Subcoordinaci&oacute;n de Sistemas de Informaci&oacute;n Geogr&aacute;fica</p>
-<!--<?php echo $iden ;?><br />
-<?php echo $cv_principal;?>	
+<?php echo $iden ;?><br />
+<!-- <?php echo $cv_principal;?>	
 <?php echo $tooltipNomArchivo; ?> -->
 
 			</span></td>
@@ -343,23 +348,7 @@ function habilitar(obj) {
                   <?php if ($cv_principal == 28){?>
                   <input type="button" onclick="cambiar.accion (11)" value="Clasificaci&oacute;n y Analista">
 				  <?php }?>	                   	
-				</div>		
-
-			  <h1> Cartografía</h1>
-				<div style="display:none;">
-                	
-                  <input type="button" onclick="cambiar.accion (14)" value="Subir archivos">
-                  <?php if ($cv_principal == 28){?>
-                  <input type="button" onclick="cambiar.accion (11)" value="Clasificaci&oacute;n y Analista">
-				  <?php }?>	                   	
-				</div>		
-
-
-
-
-
-
-	
+				</div>			
 	      	</div> <!--FIN <div id="lf2" class="accordion">-->
         </div> <!--FIN <div id="lf">-->       
 	</div> <!--FIN <div id="cn">-->
@@ -763,69 +752,14 @@ function habilitar(obj) {
 
 
 
-             <div id="div14"  class="element">
-
-                <div id="contenido">
 
 
 
-    <h1>Adjunta tus tres archivos fundamentales</h1>
-        <form action="upload.php" method="post" enctype="multipart/form-data">
-<table>
-<tr><td>archivo shape sh</td><td><input type="file" name="archivo[]"><br></td></tr>
-
-<tr><td>sx</td><td><input type="file" name="archivo[]"><br></td></tr>
-<tr><td>sd</td><td><input type="file" name="archivo[]"><br></td></tr>
-</table>
-<input type="submit" value="Subir">
-    </form>
-
-    
-    <div class="progress">
-        <div class="bar"></div >
-        <div class="percent">0%</div >
-    </div>
-    
-    <div id="status"></div>
-    
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>
-<script src="jquery.form.js"></script>
-<script>
-(function() 
-{
-    
-    var bar = $('.bar');
-    var percent = $('.percent');
-    var status = $('#status');
-       
-    $('form').ajaxForm({
-        beforeSend: function() {
-            status.empty();
-            var percentVal = '0%';
-            bar.width(percentVal)
-            percent.html(percentVal);
-        },
-        uploadProgress: function(event, position, total, percentComplete) {
-            var percentVal = percentComplete + '%';
-            bar.width(percentVal)
-            percent.html(percentVal);
-            //console.log(percentVal, position, total);
-        },
-        success: function() {
-            var percentVal = '100%';
-            bar.width(percentVal)
-            percent.html(percentVal);
-        },
-        complete: function(xhr) {
-            status.html(xhr.responseText);
-        }
-    }); 
-})();       
-</script>
 
 
-</div>
-</div>
+
+
+
 
 
 

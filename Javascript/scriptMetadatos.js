@@ -899,6 +899,8 @@ $(document).ready(function(){
 		
 
 		$( "#nuevo" ).click(function() {	$( "#dialog_nuevo" ).dialog( "open" );	});
+
+
 		$( "#duplica" ).click(function() {	$( "#dialog_duplica" ).dialog( "open" );	});
 		
 		$( "#cerrarSesion" ).click(function() {	$( "#cerrar_sesion" ).dialog( "open" );	});
