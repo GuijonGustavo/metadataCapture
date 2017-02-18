@@ -285,6 +285,7 @@ function habilitar(obj) {
 }
 </script>
 
+
 </head>
 <body>
 
@@ -769,26 +770,36 @@ function habilitar(obj) {
 
 
 
-    <h1>Adjunta tus tres archivos fundamentales</h1>
-        <form action="upload.php" method="post" enctype="multipart/form-data">
-<table>
-<tr><td>archivo shape sh</td><td><input type="file" name="archivo[]"><br></td></tr>
+  <h1>Adjunta tus tres archivos fundamentales</h1>
 
-<tr><td>sx</td><td><input type="file" name="archivo[]"><br></td></tr>
-<tr><td>sd</td><td><input type="file" name="archivo[]"><br></td></tr>
-</table>
-<input type="submit" value="Subir">
-    </form>
+  <form class="formulario"action="upload.php" method="post" enctype="multipart/form-data">
+    <input type="file" name="archivo"><br>
+	<input type="submit" value="Upload File to Server" access="x-esri-shape">
+  </form>
+	
+  <div class="progress">
+    <div class="bar"></div >
+    <div class="percent">0%</div>
+  </div>
+  
+  <div id="status"></div>
+  
+  <h1>File Upload Progress Demo #Hola</h1>
+  <form class="formulario" action="upload1.php" method="post" enctype="multipart/form-data">
+    <input type="file" name="archivo"><br>
+    <input type="submit" value="Upload File to Server">
+  </form>
+  
+  <div class="progress">
+    <div class="bar1"></div >
+    <div class="percent1">0%</div >
+  </div>
+  
+  <div id="status1"></div>
+    
 
-    
-    <div class="progress">
-        <div class="bar"></div >
-        <div class="percent">0%</div >
-    </div>
-    
-    <div id="status"></div>
-    
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>
+
+
 <script src="jquery.form.js"></script>
 <script>
 (function() 
@@ -798,7 +809,7 @@ function habilitar(obj) {
     var percent = $('.percent');
     var status = $('#status');
        
-    $('form').ajaxForm({
+    $('.formulario').ajaxForm({
         beforeSend: function() {
             status.empty();
             var percentVal = '0%';
@@ -822,6 +833,7 @@ function habilitar(obj) {
     }); 
 })();       
 </script>
+
 
 
 </div>
