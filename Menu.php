@@ -769,10 +769,10 @@ function habilitar(obj) {
                 <div id="contenido">
 
 
+<div id="archivo_shp">
+  <h1>Adjunta tu archivo *.shp</h1>
 
-  <h1>Adjunta tus tres archivos fundamentales</h1>
-
-  <form class="formulario"action="upload.php" method="post" enctype="multipart/form-data">
+  <form class="formulario"action="upload_shp.php" method="post" enctype="multipart/form-data">
     <input type="file" name="archivo"><br>
 	<input type="submit" value="Upload File to Server" access="x-esri-shape">
   </form>
@@ -783,23 +783,63 @@ function habilitar(obj) {
   </div>
   
   <div id="status"></div>
-  
-  <h1>File Upload Progress Demo #Hola</h1>
-  <form class="formulario" action="upload1.php" method="post" enctype="multipart/form-data">
+</div>
+                                       
+<div id="archivo_shx">
+                                       
+  <h1>Adjunta tu archivo *.shx</h1>
+  <form class="formulario" action="upload_shx.php" method="post" enctype="multipart/form-data">
     <input type="file" name="archivo"><br>
     <input type="submit" value="Upload File to Server">
   </form>
   
   <div class="progress">
-    <div class="bar1"></div >
-    <div class="percent1">0%</div >
+    <div class="bar"></div >
+    <div class="percent">0%</div >
   </div>
   
-  <div id="status1"></div>
+  <div id="status"></div>
     
+</div>
+
+                                       
+<div id="archivo_dbf">
+                                       
+  <h1>Adjunta tu archivo *.prj</h1>
+  <form class="formulario" action="upload_prj.php" method="post" enctype="multipart/form-data">
+    <input type="file" name="archivo"><br>
+    <input type="submit" value="Upload File to Server">
+  </form>
+  
+  <div class="progress">
+    <div class="bar"></div >
+    <div class="percent">0%</div >
+  </div>
+  
+  <div id="status"></div>
+    
+</div>
+
+                                       
+<div id="archivo_dbf">
+                                       
+  <h1>Adjunta tu archivo *.dbf</h1>
+  <form class="formulario" action="upload_dbf.php" method="post" enctype="multipart/form-data">
+    <input type="file" name="archivo"><br>
+    <input type="submit" value="Upload File to Server">
+  </form>
+  
+  <div class="progress">
+    <div class="bar"></div >
+    <div class="percent">0%</div >
+  </div>
+  
+  <div id="status"></div>
+    
+</div>
 
 
-
+                                       
 <script src="jquery.form.js"></script>
 <script>
 (function() 
@@ -820,7 +860,7 @@ function habilitar(obj) {
             var percentVal = percentComplete + '%';
             bar.width(percentVal)
             percent.html(percentVal);
-            //console.log(percentVal, position, total);
+            // console.log(percentVal, position, total);
         },
         success: function() {
             var percentVal = '100%';
@@ -833,6 +873,11 @@ function habilitar(obj) {
     }); 
 })();       
 </script>
+
+
+
+
+
 
 
 
