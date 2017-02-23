@@ -1,9 +1,13 @@
 <?php
 
 //comprobamos que sea una petición ajax
-if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') 
-{
-  
+//if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') 
+//{
+
+
+
+
+
     $files = $_FILES['archivo']['name'];
     $tipoFile = $_FILES['archivo']['type'];
 
@@ -31,7 +35,8 @@ if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQU
             echo "Este archivo no es válido";
         }
 
-}
+
+//}
     
 //Sección para hacer el ZIP
 
