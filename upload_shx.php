@@ -1,13 +1,5 @@
 <?php
 
-//comprobamos que sea una petición ajax
-if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') 
-{
-//if(isset($_POST["archivo"])){
-
-
-
-
     $files = $_FILES['archivo']['name'];
     $tipoFile = $_FILES['archivo']['type'];
 
@@ -39,24 +31,6 @@ if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQU
 
             echo "<script type=\"text/javascript\">alert(\"Este archivo no es válido\");</script>"; 
         }
-}
-
-//}
-    
-//Sección para hacer el ZIP
-
-//$zip = new ZipArchive();
-
-//$filename = 'test.zip';
-
-//if($zip->open($filename,ZipArchive::CREATE)===true) {
-//    $zip->addFile("files/*.*");
-//    $zip->close();
-//    echo 'Creado '.$filename;
-//}
-//else {
-//    echo 'Error creando '.$filename;
-//}
 
 ?>
 

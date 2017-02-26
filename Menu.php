@@ -772,51 +772,52 @@ function habilitar(obj) {
 <div id="archivo_shp">
   <h1>Adjunta tu archivo *.shp</h1>
 
-  <form class="formulario"action="upload_shp.php" method="post" enctype="multipart/form-data">
+  <form class="formulario_shp"action="upload_shp.php" method="post" enctype="multipart/form-data">
     <input type="file" name="archivo"><br>
-	<input type="submit" value="Upload File to Server" access="x-esri-shape">
+	<input type="submit" name="file_shp" value="Subir" access="application/x-esri-shape">
   </form>
 	
-  <div class="progress">
-    <div class="bar"></div >
-    <div class="percent">0%</div>
+  <div class="progress_shp">
+    <div class="bar_shp"></div >
+    <div class="percent_shp">0%</div>
   </div>
   
-  <div id="status"></div>
+  <div id="status_shp"></div>
 </div>
                                        
 <div id="archivo_shx">
                                        
   <h1>Adjunta tu archivo *.shx</h1>
-  <form class="formulario" action="upload_shx.php" method="post" enctype="multipart/form-data">
+  <form class="formulario_shx" action="upload_shx.php" method="post" enctype="multipart/form-data">
     <input type="file" name="archivo"><br>
-    <input type="submit" value="Upload File to Server">
+    <input type="submit" name="file_shx" value="Subir" access="application/x-esri-shape">
   </form>
   
-  <div class="progress">
-    <div class="bar"></div >
-    <div class="percent">0%</div >
+  <div class="progress_shx">
+    <div class="bar_shx"></div >
+    <div class="percent_shx">0%</div >
   </div>
   
-  <div id="status"></div>
+  <div id="status_shx"></div>
     
 </div>
 
                                        
 <div id="archivo_dbf">
+                                     
                                        
   <h1>Adjunta tu archivo *.prj</h1>
-  <form class="formulario" action="upload_prj.php" method="post" enctype="multipart/form-data">
+  <form class="formulario_prj" action="upload_prj.php" method="post" enctype="multipart/form-data">
     <input type="file" name="archivo"><br>
-    <input type="submit" value="Upload File to Server">
+    <input type="submit" name="file_prj" value="Subir" access="application/octet-stream">
   </form>
   
-  <div class="progress">
-    <div class="bar"></div >
-    <div class="percent">0%</div >
+  <div class="progress_prj">
+    <div class="bar_prj"></div >
+    <div class="percent_prj">0%</div >
   </div>
   
-  <div id="status"></div>
+  <div id="status_prj"></div>
     
 </div>
 
@@ -824,32 +825,80 @@ function habilitar(obj) {
 <div id="archivo_dbf">
                                        
   <h1>Adjunta tu archivo *.dbf</h1>
-  <form class="formulario" action="upload_dbf.php" method="post" enctype="multipart/form-data">
+  <form class="formulario_dbf" action="upload_dbf.php" method="post" enctype="multipart/form-data">
     <input type="file" name="archivo"><br>
-    <input type="submit" value="Upload File to Server">
+    <input type="submit" name="file_dbf" value="Subir" access="application/x-dbf">
   </form>
   
-  <div class="progress">
-    <div class="bar"></div >
-    <div class="percent">0%</div >
+  <div class="progress_dbf">
+    <div class="bar_dbf"></div >
+    <div class="percent_dbf">0%</div >
   </div>
   
-  <div id="status"></div>
+  <div id="status_dbf"></div>
     
 </div>
 
-
+<div id="zipear_enviar_borrar">
+<h1>Envía tu información</h1>
+  <form class="formulario_zip" action="enviar_servidor.php" method="post" enctype="multipart/form-data">
+    <input type="submit" name="conabio" value="Enviar">
+</form>
+  
+  <div class="progress_zip">
+    <div class="bar_zip"></div >
+    <div class="percent_zip">0%</div >
+  </div>
+  
+  <div id="status_zip"></div>
+                                      
+</div>
+                                    
                                        
 <script src="jquery.form.js"></script>
 <script>
 (function() 
 {
     
-    var bar = $('.bar');
-    var percent = $('.percent');
-    var status = $('#status');
+    var bar = $('.bar_shp');
+    var percent = $('.percent_shp');
+    var status = $('#status_shp');
        
-    $('.formulario').ajaxForm({
+    $('.formulario_shp').ajaxForm({
+        beforeSend: function() {
+            status.empty();
+            var percentVal = '0%';
+            bar.width(percentVal)
+            percent.html(percentVal);
+        },
+        uploadProgress: function(event, position, total, percentComplete) {
+            var percentVal = percentComplete + '%';
+            bar.width(percentVal)
+            percent.html(percentVal);
+            // console.log(percentVal, position, total);
+        },
+        success: function() {
+            var percentVal = '100%';
+            bar.width(percentVal)
+            percent.html(percentVal);
+        },
+        complete: function(xhr) {
+            status.html(xhr.responseText);
+        }
+    }); 
+})();       
+</script>
+                                   
+
+<script>
+(function() 
+{
+    
+    var bar = $('.bar_shx');
+    var percent = $('.percent_shx');
+    var status = $('#status_shx');
+       
+    $('.formulario_shx').ajaxForm({
         beforeSend: function() {
             status.empty();
             var percentVal = '0%';
@@ -874,7 +923,104 @@ function habilitar(obj) {
 })();       
 </script>
 
+<script>
+(function() 
+{
+    
+    var bar = $('.bar_prj');
+    var percent = $('.percent_prj');
+    var status = $('#status_prj');
+       
+    $('.formulario_prj').ajaxForm({
+        beforeSend: function() {
+            status.empty();
+            var percentVal = '0%';
+            bar.width(percentVal)
+            percent.html(percentVal);
+        },
+        uploadProgress: function(event, position, total, percentComplete) {
+            var percentVal = percentComplete + '%';
+            bar.width(percentVal)
+            percent.html(percentVal);
+            // console.log(percentVal, position, total);
+        },
+        success: function() {
+            var percentVal = '100%';
+            bar.width(percentVal)
+            percent.html(percentVal);
+        },
+        complete: function(xhr) {
+            status.html(xhr.responseText);
+        }
+    }); 
+})();       
+</script>
 
+<script>
+(function() 
+{
+    
+    var bar = $('.bar_dbf');
+    var percent = $('.percent_dbf');
+    var status = $('#status_dbf');
+       
+    $('.formulario_dbf').ajaxForm({
+        beforeSend: function() {
+            status.empty();
+            var percentVal = '0%';
+            bar.width(percentVal)
+            percent.html(percentVal);
+        },
+        uploadProgress: function(event, position, total, percentComplete) {
+            var percentVal = percentComplete + '%';
+            bar.width(percentVal)
+            percent.html(percentVal);
+            // console.log(percentVal, position, total);
+        },
+        success: function() {
+            var percentVal = '100%';
+            bar.width(percentVal)
+            percent.html(percentVal);
+        },
+        complete: function(xhr) {
+            status.html(xhr.responseText);
+        }
+    }); 
+})();       
+</script>
+
+<script>
+(function() 
+{
+    
+    var bar = $('.bar_zip');
+    var percent = $('.percent_zip');
+    var status = $('#status_zip');
+       
+    $('.formulario_zip').ajaxForm({
+        beforeSend: function() {
+            status.empty();
+            var percentVal = '0%';
+            bar.width(percentVal)
+            percent.html(percentVal);
+        },
+        uploadProgress: function(event, position, total, percentComplete) {
+            var percentVal = percentComplete + '%';
+            bar.width(percentVal)
+            percent.html(percentVal);
+            // console.log(percentVal, position, total);
+        },
+        success: function() {
+            var percentVal = '100%';
+            bar.width(percentVal)
+            percent.html(percentVal);
+        },
+        complete: function(xhr) {
+            status.html(xhr.responseText);
+        }
+    }); 
+})();       
+</script>
 
 
 
