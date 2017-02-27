@@ -762,18 +762,16 @@ function habilitar(obj) {
 </div>
 </div>
 
-
-
              <div id="div14"  class="element">
 
                 <div id="contenido">
 
 
-<div id="archivo_shp">
+<div id="archivoshp">
   <h1>Adjunta tu archivo *.shp</h1>
 
-  <form class="formulario_shp"action="upload_shp.php" method="post" enctype="multipart/form-data">
-    <input type="file" name="archivo"><br>
+  <form class="formulario_shp" action="upload_shp.php"  method="post" enctype="multipart/form-data">
+    <input type="file" name="archivo_shp"><br>
 	<input type="submit" name="file_shp" value="Subir" access="application/x-esri-shape">
   </form>
 	
@@ -785,11 +783,11 @@ function habilitar(obj) {
   <div id="status_shp"></div>
 </div>
                                        
-<div id="archivo_shx">
+<div id="archivoshx">
                                        
   <h1>Adjunta tu archivo *.shx</h1>
   <form class="formulario_shx" action="upload_shx.php" method="post" enctype="multipart/form-data">
-    <input type="file" name="archivo"><br>
+    <input type="file" name="archivo_shx"><br>
     <input type="submit" name="file_shx" value="Subir" access="application/x-esri-shape">
   </form>
   
@@ -803,12 +801,12 @@ function habilitar(obj) {
 </div>
 
                                        
-<div id="archivo_dbf">
+<div id="archivoprj">
                                      
                                        
   <h1>Adjunta tu archivo *.prj</h1>
   <form class="formulario_prj" action="upload_prj.php" method="post" enctype="multipart/form-data">
-    <input type="file" name="archivo"><br>
+    <input type="file" name="archivo_prj"><br>
     <input type="submit" name="file_prj" value="Subir" access="application/octet-stream">
   </form>
   
@@ -822,11 +820,11 @@ function habilitar(obj) {
 </div>
 
                                        
-<div id="archivo_dbf">
+<div id="archivodbf">
                                        
   <h1>Adjunta tu archivo *.dbf</h1>
   <form class="formulario_dbf" action="upload_dbf.php" method="post" enctype="multipart/form-data">
-    <input type="file" name="archivo"><br>
+    <input type="file" name="archivo_dbf"><br>
     <input type="submit" name="file_dbf" value="Subir" access="application/x-dbf">
   </form>
   

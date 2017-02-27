@@ -1,17 +1,17 @@
 <?php
 
-    $files = $_FILES['archivo']['name'];
-    $tipoFile = $_FILES['archivo']['type'];
+    $files_dbf = $_FILES['archivo_dbf']['name'];
+    $tipoFile = $_FILES['archivo_dbf']['type'];
 
-    $extension = end(explode(".", $_FILES['archivo']['name']));
+    $extension = end(explode(".", $_FILES['archivo_dbf']['name']));
  
 
     if(($tipoFile == "application/x-dbf") && ($extension == "dbf"))
         {
 
-            if (move_uploaded_file($_FILES['archivo']['tmp_name'],"files/".$_FILES['archivo']['name']) )
+            if (move_uploaded_file($_FILES['archivo_dbf']['tmp_name'],"files/".$_FILES['archivo_dbf']['name']) )
                 {
-                    $p = "EL archivo " . $_FILES['archivo']['name'] . " ha subido correctamente.";
+                    $p = "EL archivo " . $_FILES['archivo_dbf']['name'] . " ha subido correctamente.";
 
 
                     echo "<script type=\"text/javascript\">alert(\"$p\");</script>"; 

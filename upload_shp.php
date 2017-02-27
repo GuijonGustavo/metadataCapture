@@ -1,18 +1,17 @@
 <?php
+$files_shp = $_FILES['archivo_shp']['name'];
+$tipoFile = $_FILES['archivo_shp']['type'];
 
-    $files = $_FILES['archivo']['name'];
-    $tipoFile = $_FILES['archivo']['type'];
-
-    $extension = end(explode(".", $_FILES['archivo']['name']));
+    $extension = end(explode(".", $_FILES['archivo_shp']['name']));
  
 
     if(($tipoFile == "application/x-esri-shape") && ($extension == "shp"))
         {
 
-            if (move_uploaded_file($_FILES['archivo']['tmp_name'],"files/".$_FILES['archivo']['name']) )
+            if (move_uploaded_file($_FILES['archivo_shp']['tmp_name'],"files/".$_FILES['archivo_shp']['name']) )
                 {
-                    $p = "EL archivo " . $_FILES['archivo']['name'] . " ha subido correctamente.";
-
+                    
+                    $p = "EL archivo " . $_FILES['archivo_shp']['name'] . " ha subido correctamente.";
 
                     echo "<script type=\"text/javascript\">alert(\"$p\");</script>"; 
                 }

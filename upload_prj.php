@@ -1,18 +1,16 @@
 <?php
-    $files = $_FILES['archivo']['name'];
-    $tipoFile = $_FILES['archivo']['type'];
+    $files_prj = $_FILES['archivo_prj']['name'];
+    $tipoFile = $_FILES['archivo_prj']['type'];
 
-    echo $tipoFile;
-
-    $extension = end(explode(".", $_FILES['archivo']['name']));
+    $extension = end(explode(".", $_FILES['archivo_prj']['name']));
  
 
     if(($tipoFile == "application/octet-stream") && ($extension == "prj"))
         {
 
-            if (move_uploaded_file($_FILES['archivo']['tmp_name'],"files/".$_FILES['archivo']['name']) )
+            if (move_uploaded_file($_FILES['archivo_prj']['tmp_name'],"files/".$_FILES['archivo_prj']['name']) )
                 {
-                    $p = "EL archivo " . $_FILES['archivo']['name'] . " ha subido correctamente.";
+                    $p = "EL archivo " . $_FILES['archivo_prj']['name'] . " ha subido correctamente.";
 
 
                     echo "<script type=\"text/javascript\">alert(\"$p\");</script>"; 
