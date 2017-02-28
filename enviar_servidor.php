@@ -1,27 +1,53 @@
 <?php
 
-if ($gestor = opendir('files/')) {
-    while (false !== ($archivo = readdir($gestor))) {
-        if (strpos($archivo, ".shp") !== false) {
+//Espa parte de código muestra la lista de archivo que hay en el directorio. Y muestra el nombre del archivo sin extensión.
 
-            $nombrezip = reset(explode(".", $archivo));
-            echo "$nombrezip";
-        }
+getcwd();
+chdir("files");
+
+echo "El directorio después del cambio de chdir: " . getcwd() . "<br>";
+
+if ($gestor = opendir('.'))
+    {
+        while (false !== ($archivoSHP = readdir($gestor)))
+            {
+                if (strpos($archivoSHP, ".shp") !== false)
+                    {
+
+            echo "Listado de archivos: " . $archivoSHP . "<br>";
+            $archivoSSHHPP = $archivoSHP;
+            
+            $nombrezip = reset(explode(".", $archivoSHP));
+
+
+
+                    }
+            }
+        closedir($gestor);
     }
-    closedir($gestor);
-}
+echo "Listado de archivos: " . $archivoSSHHPP . "<br>";
 
+//Esto es para crear el nombre del zip
 
-/*
+$extensionZip = ".zip";
+
+$nombrezip .= $extensionZip;
+
+echo "El directorio después del cambio de chdir: " . getcwd() . "<br>";
+
+//Este otro es para hacer el zip
+
 $zip = new ZipArchive();
 
-$filename = 'files/test.zip';
+echo "Nombre del nombrezip:  " . $nombrezip . "<br>";
+if($zip->open($nombrezip,ZipArchive::CREATE)===true)
 
-if($zip->open($filename,ZipArchive::CREATE)===true)
     {
-        $directory = "files";
-        
-        $zip->addPattern('/\.(shp)$/', $directory);
+
+//        $zip->addPattern('/\.(shp)$/');
+        echo "Nombre de archivoSHP: " . $archivoSSHHPP . "<br>";
+        $zip->addFile($archivoSSHHPP);
+        echo "exito";
         
         $zip->close();
         
@@ -29,7 +55,7 @@ if($zip->open($filename,ZipArchive::CREATE)===true)
     }
 else
     {
-        echo 'Error creando '.$filename;
+        echo 'Error creando '. $nombrezip;
     }
-*/
+
 ?>
