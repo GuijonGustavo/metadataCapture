@@ -773,6 +773,9 @@ function habilitar(obj) {
   <form class="formulario_shp" action="upload_shp.php"  method="post" enctype="multipart/form-data">
     <input type="file" name="archivo_shp"><br>
 	<input type="submit" name="file_shp" value="Subir" access="application/x-esri-shape">
+
+
+                                                                              
   </form>
 	
   <div class="progress_shp">
@@ -841,7 +844,12 @@ function habilitar(obj) {
 <h1>Envía tu información</h1>
   <form class="formulario_zip" action="enviar_servidor.php" method="post" enctype="multipart/form-data">
     <input type="submit" name="conabio" value="Enviar">
+                                       
 </form>
+
+
+
+                                       
   
   <div class="progress_zip">
     <div class="bar_zip"></div >
@@ -851,7 +859,7 @@ function habilitar(obj) {
   <div id="status_zip"></div>
                                       
 </div>
-                                    
+
                                        
 <script src="jquery.form.js"></script>
 <script>
