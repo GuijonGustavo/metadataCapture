@@ -96,6 +96,7 @@ shell_exec($mover_zip);
 
 echo "<script type=\"text/javascript\">alert(\"Se han enviado los archivos a la CONABIO\");</script>"; 
 
+//echo "<script>parent.window.location.reload(true);</script>"; Con este se recarga la página
 
 
 
