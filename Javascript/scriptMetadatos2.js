@@ -903,5 +903,5 @@ $(document).ready(function(){
 		$( "#duplica" ).click(function() {	$( "#dialog_duplica" ).dialog( "open" );	});
 		
 		$( "#cerrarSesion" ).click(function() {	$( "#cerrar_sesion" ).dialog( "open" );	});
-	
+
 	});

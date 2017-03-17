@@ -307,6 +307,7 @@ function habilitar(obj) {
     <div id="cn">
 		<div id="lf">
 	    	<div id="lf1">
+ 
             	<input type="button" id="nuevo" value="Nuevo Registro">
                 <input type="button" id="duplica" value="Duplicar Registro">
                 <input type="button" id="cerrarSesion" value="Cerrar Sesi&oacute;n">
@@ -347,11 +348,14 @@ function habilitar(obj) {
 
 			  <h1> Cartografía</h1>
 				<div style="display:none;">
-                	
-                  <input type="button" onclick="cambiar.accion (14)" value="Subir archivos">
-                  <?php if ($cv_principal == 28){?>
-                  <input type="button" onclick="cambiar.accion (11)" value="Clasificaci&oacute;n y Analista">
-				  <?php }?>	                   	
+                  <input type="button" id="zip" value="Subir zip">
+                  <input type="button" onclick="cambiar.accion (14)" value="Subir archivos">                  
+<?php if ($cv_principal == 28){?>
+                <input type="button" onclick="cambiar.accion (11)" value="Clasificaci&oacute;n y Analista">
+
+<?php }?>
+   
+                           
 				</div>		
 
 
@@ -1388,6 +1392,13 @@ function habilitar(obj) {
                         <img src="CSS/images/alert.jpg" class="alert"  /><p class="validateTips">Guardar su Informaci&oacute;n <br />Antes de salir</p>
                 </form>
             </div>
+
+            <div id="dialog_zip"  title="ZIP">
+                <form name="terminoZIP" method="post" action="PHP/cerrarSesion.php" id="formZIP">
+                      <p class="validateTips">Adjunta tu zip <br />Antes de salir</p>
+
+                </form>
+            </div>                          
             
         </div> <!--FIN <div id="rg">-->
         

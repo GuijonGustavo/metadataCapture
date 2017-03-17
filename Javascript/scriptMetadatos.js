@@ -897,10 +897,30 @@ $(function()
 	  },
       });
 
+            $( "#dialog_zip" ).dialog
+      ({
+	  autoOpen: false,
+	  resizable: false,
+	  height: 200,
+	  width: 450,
+	  modal: true,
+	  buttons:
+	  {
+	      "Subir ZIP": function()
+	      {
+		  $( "#formTerminoSesion" ).submit()
+	      },
+
+	      "Cancelar": function() {$( this ).dialog( "close" );}
+	  },
+      });
+
 
       $( "#nuevo" ).click(function() {$( "#dialog_nuevo" ).dialog( "open" );});
       $( "#duplica" ).click(function() {$( "#dialog_duplica" ).dialog( "open" );});
 
       $( "#cerrarSesion" ).click(function() {$( "#cerrar_sesion" ).dialog( "open" );});
+  
+      $( "#zip" ).click(function() {$( "#dialog_zip" ).dialog( "open" );});
 
   });
