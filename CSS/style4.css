@@ -383,28 +383,6 @@ table {
 
 form { display: block; margin: 20px auto; background: #eee; border-radius: 10px; padding: 15px }
 
-
-.bar_shp { background-color: #B4F5B4; width:0%; height:20px; border-radius: 3px; }
-.percent_shp { position:absolute; display:inline-block; top:3px; left:48%; }
-.progress_shp { position:relative; width:400px; border: 1px solid #ddd; padding: 1px; border-radius: 3px; }
-
-.bar_shx { background-color: #B4F5B4; width:0%; height:20px; border-radius: 3px; }
-.percent_shx { position:absolute; display:inline-block; top:3px; left:48%; }
-.progress_shx { position:relative; width:400px; border: 1px solid #ddd; padding: 1px; border-radius: 3px; }
-
-.bar_prj { background-color: #B4F5B4; width:0%; height:20px; border-radius: 3px; }
-.percent_prj { position:absolute; display:inline-block; top:3px; left:48%; }
-.progress_prj { position:relative; width:400px; border: 1px solid #ddd; padding: 1px; border-radius: 3px; }
-
-.bar_dbf { background-color: #B4F5B4; width:0%; height:20px; border-radius: 3px; }
-.percent_dbf { position:absolute; display:inline-block; top:3px; left:48%; }
-.progress_dbf { position:relative; width:400px; border: 1px solid #ddd; padding: 1px; border-radius: 3px; }
-
-.bar_zip { background-color: #B4F5B4; width:0%; height:20px; border-radius: 3px; }
-.percent_zip { position:absolute; display:inline-block; top:3px; left:48%; }
-.progress_zip { position:relative; width:400px; border: 1px solid #ddd; padding: 1px; border-radius: 3px; }
-
-
 .bar_zipear { background-color: #B4F5B4; width:0%; height:20px; border-radius: 3px; }
 .percent_zipear { position:absolute; display:inline-block; top:3px; left:48%; }
 .progress_zipear { position:relative; width:400px; border: 1px solid #ddd; padding: 1px; border-radius: 3px; }
