@@ -906,12 +906,33 @@ $(function()
 	  modal: true,
 	  buttons:
 	  {
-	      "Subir ZIP": function()
+	      "Buscar": function()
 	      {
-		  $( "#formTerminoSesion" ).submit()
+		  var input = $(document.createElement("input"));
+		  input.attr("type", "file");
+		  input.attr("name", "archivo_sshp");
+		  input.trigger("click");		  
 	      },
 
+	      "BuscarOtro":function()
+	      {
+		  type:file;
+		  name:archivo_sshp;
+		  action:upload_shp.php;
+	      },
+	      
+	      "Subir": function()
+	      {
+		  $("#enviarZip").submit();		  
+	      },
+
+	      "Enviar": function()
+	      {
+		  $("#enviarZip").submit();		  
+	      },	      	      
+
 	      "Cancelar": function() {$( this ).dialog( "close" );}
+	      
 	  },
       });
 

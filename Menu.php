@@ -769,7 +769,27 @@ function habilitar(obj) {
 
                 <div id="contenido">
 
+<div id="archivo_zipear">
+  <h1>Adjunta tu archivo *.zip</h1>
 
+  <form class="formulario_zipear" action="upload_zipear.php"  method="post" enctype="multipart/form-data">
+    <input type="file" name="archivo_zipear"><br>
+	<input type="submit" name="file_zipear" value="Subir" access="application/zip">
+                                                                          
+  </form>
+
+	
+  <div class="progress_zipear">
+    <div class="bar_zipear"></div >
+    <div class="percent_zipear">0%</div>
+  </div>
+  
+  <div id="status_zipear"></div>
+
+
+                                       
+</div>
+                                       
 <div id="archivoshp">
   <h1>Adjunta tu archivo *.shp</h1>
 
@@ -858,6 +878,41 @@ function habilitar(obj) {
 </div>
                                        
 <script src="jquery.form.js"></script>
+                                       
+<script>
+(function() 
+{
+    
+    var bar = $('.bar_zipear');
+    var percent = $('.percent_zipear');
+    var status = $('#status_zipear');
+       
+    $('.formulario_zipear').ajaxForm({
+        beforeSend: function() {
+            status.empty();
+            var percentVal = '0%';
+            bar.width(percentVal)
+            percent.html(percentVal);
+        },
+        uploadProgress: function(event, position, total, percentComplete) {
+            var percentVal = percentComplete + '%';
+            bar.width(percentVal)
+            percent.html(percentVal);
+            // console.log(percentVal, position, total);
+        },
+        success: function() {
+            var percentVal = '100%';
+            bar.width(percentVal)
+            percent.html(percentVal);
+        },
+        complete: function(xhr) {
+            status.html(xhr.responseText);
+        }
+    }); 
+})();       
+</script>
+
+                                       
 <script>
 (function() 
 {
@@ -890,7 +945,7 @@ function habilitar(obj) {
     }); 
 })();       
 </script>
-                                   
+
 
 <script>
 (function() 
@@ -1394,10 +1449,9 @@ function habilitar(obj) {
             </div>
 
             <div id="dialog_zip"  title="ZIP">
-                <form name="terminoZIP" method="post" action="PHP/cerrarSesion.php" id="formZIP">
-                      <p class="validateTips">Adjunta tu zip <br />Antes de salir</p>
-
-                </form>
+                        
+                      <p class="validateTips">Recuerda que antes de adjunta tu zip debes de ...</p>
+                          
             </div>                          
             
         </div> <!--FIN <div id="rg">-->
