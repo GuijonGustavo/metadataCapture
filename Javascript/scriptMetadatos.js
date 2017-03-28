@@ -908,27 +908,30 @@ $(function()
 	  {
 	      "Buscar": function()
 	      {
-		  var input = $(document.createElement("input"));
-		  input.attr("type", "file");
-		  input.attr("name", "archivo_sshp");
-		  input.trigger("click");		  
-	      },
 
-	      "BuscarOtro":function()
-	      {
-		  type:file;
-		  name:archivo_sshp;
-		  action:upload_shp.php;
-	      },
-	      
-	      "Subir": function()
-	      {
-		  $("#enviarZip").submit();		  
+/*       
+                  // creating input on-the-fly
+                  var input = $(document.createElement('input'));//Sí
+                  input.attr("type", "file"); //Sí
+                  input.trigger('click'); // opening dialog
+                  return false; // avoiding navigation
+*/
+
+		  // creating input on-the-fly
+		  var input = $(document.createElement('input'));//Sí
+		  input.attr("type", "file"); //Sí
+		  $(input).change(function(e){
+		      var fileName = e.target.files[0].name;
+		      alert(fileName);
+		  });
+		  input.trigger('click'); // opening dialog
+		  return false; // avoiding navigation
+		  
 	      },
 
 	      "Enviar": function()
 	      {
-		  $("#enviarZip").submit();		  
+		  $(this).load("upload_zipear.php");
 	      },	      	      
 
 	      "Cancelar": function() {$( this ).dialog( "close" );}

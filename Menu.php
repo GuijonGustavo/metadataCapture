@@ -769,7 +769,7 @@ function habilitar(obj) {
 
                 <div id="contenido">
 
-<div id="archivo_zipear">
+<div id="archivo_zipear_canceladoPorPruebas">
   <h1>Adjunta tu archivo *.zip</h1>
 
   <form class="formulario_zipear" action="upload_zipear.php"  method="post" enctype="multipart/form-data">
@@ -1192,7 +1192,7 @@ function habilitar(obj) {
 
             <div id="dialog_zip"  title="ZIP">
                         
-                      <p class="validateTips">Recuerda que antes de adjunta tu zip debes de ...</p>
+                      <p class="validateTips">Recuerda que antes de adjunta tu zip debes de asegurarte que toda la información es correcta. Revisa si los polígonos deben de cerar correctametne.</p>
                           
             </div>                          
             

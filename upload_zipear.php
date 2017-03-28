@@ -1,8 +1,13 @@
 <?php
+
+
+
 $files_zipear = $_FILES['archivo_zipear']['name'];
 $tipoFile = $_FILES['archivo_zipear']['type'];
-
+//    include'prueba_zip.php');
     $extension = end(explode(".", $_FILES['archivo_zipear']['name']));
+
+
 
 
     if(($tipoFile == "application/x-zip-compressed") && ($extension == "zip"))
