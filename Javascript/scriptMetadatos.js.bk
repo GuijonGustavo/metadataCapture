@@ -906,36 +906,6 @@ $(function()
 	  modal: true,
 	  buttons:
 	  {
-	      "BuscarPrueba": function()
-	      {
-
-		  // creating input on-the-fly
-/*		  var form = $(document.createElement('form'));
-form.attr("action","upload_zipear.php");
-form.attr("id","xxx");
-form.attr("method","post");
-form.attr("enctype","multipart/form-data");
-*/
-
-		  var form = $(document.createElement('form'));
-		  form.attr("id","hola");
-		  form.attr("method","post");		  
-		  
-		  var input = $(document.createElement('input'));
-		  
-
-		  input.attr("type", "file");
-		  //		  input.attr("id","hola");
-		  window["form"]=form;//para convertir la variable en global
-		  window["input"]=input;//para convertir la variable en global		  
-		  form.submit();		  
-		  input.trigger('click'); // opening dialog
-		  alert("Aquí va el input:"  + input);
-		  alert("Aquí va el id:"  + form.attr("id","hola"));		  		  
-//		  return false; // avoiding navigation
-
-	},
-
 	      "Buscar": function()
 	      {
 
@@ -948,64 +918,21 @@ form.attr("enctype","multipart/form-data");
 */
 
 		  // creating input on-the-fly
-		  var input = $(document.createElement('input'));
-		  input.attr("type", "file");
-	//	  input.attr("id","hola"); 
-		  $(input).change(function(e)
-				  {
-				      var fileName = e.target.files[0].name;
-//				      var fileName = e.type.files[0].name;				      
-				      alert(fileName);
-				      
-				      window["fileName"]=fileName;//para convertir la variable en global
-//				      window["input"]=input;
-				      //				      window.location.href = "upload_zipear.php?archivo_zipear=" + fileName;
-				      //				      var fileN = "<?php echo $fileName;?>";
-				      		      
-
-				  });
-		  
+		  var input = $(document.createElement('input'));//Sí
+		  input.attr("type", "file"); //Sí
+		  $(input).change(function(e){
+		      var fileName = e.target.files[0].name;
+		      alert(fileName);
+		  });
 		  input.trigger('click'); // opening dialog
 		  return false; // avoiding navigation
 		  
-},
-
-	      "EnviarPrueba": function()
-	      {
-
-//		  var data = new FormData();
-
-//		  $.each($('input[type=file]')[0].files, function(i, file) {
-
-//		      data.append('file-'+i, file);
-//		  });
-		  var other_data = $('#hola').serializeArray();
-		  alert("Aquí el other_data:" + other_data);
-		  $.each(other_data,function(key,input){
-		      data.append(input.name,input.value);
-		  });
-//		  jQuery.ajax({
-		  $.ajax({		      
-		      url: 'upload_zipear.php',
-		      data: other_data,
-		      cache: false,
-		      contentType: false,
-		      processData: false,
-		      type: 'POST',
-		      success: function(other_data){
-			  alert("Aquí va el data: " + other_data);
-		      }
-		  });
-
-
-		  
 	      },
-	      
+
 	      "Enviar": function()
-	      {		  
+	      {
 		  $(this).load("upload_zipear.php");
-
-	      },
+	      },	      	      
 
 	      "Cancelar": function() {$( this ).dialog( "close" );}
 	      

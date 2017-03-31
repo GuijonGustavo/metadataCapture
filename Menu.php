@@ -772,9 +772,9 @@ function habilitar(obj) {
 <div id="archivo_zipear_canceladoPorPruebas">
   <h1>Adjunta tu archivo *.zip</h1>
 
-  <form class="formulario_zipear" action="upload_zipear.php"  method="post" enctype="multipart/form-data">
+  <form class="formulario_zipear" id="formulario_zipear" action="upload_zipear.php"  method="post" enctype="multipart/form-data">
     <input type="file" name="archivo_zipear"><br>
-	<input type="submit" name="file_zipear" value="Subir" access="application/zip">
+	<input type="submit" id="file_zipear" name="file_zipear" value="Subir" access="application/zip">
                                                                           
   </form>
 
