@@ -1,17 +1,15 @@
 <?php
 
 
-
 $files_zipear = $_FILES['archivo_zipear']['name'];
 $tipoFile = $_FILES['archivo_zipear']['type'];
-//    include'prueba_zip.php');
+
+
     $extension = end(explode(".", $_FILES['archivo_zipear']['name']));
 
-
-
-
     if(($tipoFile == "application/x-zip-compressed") && ($extension == "zip"))
-
+//  if($extension == "zip")
+        
         {
 
             if (move_uploaded_file($_FILES['archivo_zipear']['tmp_name'],"files/".$_FILES['archivo_zipear']['name']) )
@@ -25,7 +23,7 @@ $tipoFile = $_FILES['archivo_zipear']['type'];
             else
                 {
 
-                    echo "<script type=\"text/javascript\">alert(\"No se pudo subir su archivo" . $files_zipear . "Error Processing Request\");</script>"; 
+                    echo "<script type=\"text/javascript\">alert(\"No se pudo subir su archivo\" . $files_zipear . \"Error Processing Request\");</script>"; 
                    
                 }
         }

@@ -466,51 +466,8 @@ function genera($campo, $class, $id , $cv_principal, $tipo , $toolTip)
 	}
  } 
  
- 	
-// ---------------------<<<<<< FUNCIÓN NOMBRE ARCHIVO >>>>>>>-------------------------
-
-function nombre_archivo($campo, $id , $cv_principal)
-{
-    
-	global $id;
-
-	$db = conectar();
-	if($db)
-	{
-
-		if ($id)
-		{     
-			if ($cv_principal == 28)
-			{
-				$sql_genera = sql($campo,$id , $cv_principal , 0);
-				$res_genera = pg_query($db, $sql_genera [0]);
-			}
-			if ($cv_principal <> 28)
-			{
-				$sql_genera = sql($campo,$id , $cv_principal , 0);
-				$res_genera = pg_query($db, $sql_genera [2]);
-			}
-			
-			if (!$res_genera) { exit("Error en la consulta"); } 
-			
-			
-			if (pg_num_rows($res_genera) <> 0)
-                {      
-
-				while ($fila = pg_fetch_array($res_genera, null, PGSQL_ASSOC)) { foreach ($fila as $valor_genera) { $val = $valor_genera;}}
-                
-                    return $val;
-
-			}	
-		}
-	}// FIN DB
-
- } 
  
-
-
-
-
+ 
 // ---------------------<<<<<< FUNCIÓN TABLA  QUE IMPRIME LOS RESULTADOS DE AUTORES, LIGAS, TEMAS, Y SITIOS>>>>>>>------------------------- 
 function tabla($campo,$tamano,$id , $cv_principal ,$tema )
 {

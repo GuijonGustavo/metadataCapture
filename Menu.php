@@ -45,6 +45,10 @@ else
 	} //Cerrrar conexion a la BD
 	 
 
+    $nom = nombre_archivo("c_cobertura",$id , $cv_principal);
+
+    $_SESSION['nom'] = $nom;
+
 ?>
 
 
@@ -388,12 +392,12 @@ function habilitar(obj) {
                                  <tr >
                                     <td>T&iacute;tulo del Mapa:</td>
                                     <td colspan="6"><?php 	$tooltipTitulo = "Título del mapa";
-                                                      		global $id; genera("c_nombre","extenso",$id , $cv_principal , "txt" , $tooltipTitulo);?></td>
+                                                 global $id; genera("c_nombre","extenso",$id , $cv_principal , "txt" , $tooltipTitulo);?></td>
                                  </tr>
                                  <tr >
                                     <td>Nombre del Archivo:</td>
-                                    <td colspan="6"><?php  	$tooltipNomArchivo = "Nombre del dato geoespacial o capa digital";
-                                                      		global $id;  genera("c_cobertura","extenso",$id , $cv_principal , "txt" , $tooltipNomArchivo); ?></td>
+                                                 <td colspan="6"><?php  	$tooltipNomArchivo = "Nombre del dato geoespacial o capa digital"; 
+                                                 global $id;  genera("c_cobertura","extenso",$id , $cv_principal , "txt" , $tooltipNomArchivo); ?></td>
                                  </tr>
                                  <tr >
                                    	<td>Fecha de Ingreso:</td>
@@ -732,9 +736,6 @@ function habilitar(obj) {
 
                 <div id="contenido">
 
-
-
-
                     <form name="datos" method="POST" >
                         <input type = "submit" value = "Guardar"  id="aprobarMetadato" onclick = "this.form.action = 'guardar.php?hoja=aprobarMetadato&id=<?php echo $id;?>&cv_principal=<?php echo $cv_principal;?>'"/>
 							<table width="869">
@@ -769,13 +770,14 @@ function habilitar(obj) {
 
                 <div id="contenido">
 
-<div id="archivo_zipear_canceladoPorPruebas">
-  <h1>Adjunta tu archivo *.zip</h1>
-
+<div id="archivo_zipear">
+                                      <form>                                                  
+                                       <p class="txtN1">Adjunta tu archivo: <?php echo $nom;?>.zip</p>
+                                       </form>
+                                      
   <form class="formulario_zipear" id="formulario_zipear" action="upload_zipear.php"  method="post" enctype="multipart/form-data">
-    <input type="file" name="archivo_zipear"><br>
-	<input type="submit" id="file_zipear" name="file_zipear" value="Subir" access="application/zip">
-                                                                          
+    <input type="file" name="archivo_zipear" accept=".zip">
+	<input type="submit" id="file_zipear" name="file_zipear" value="Subir" access="application/zip">                                       
   </form>
 
 	

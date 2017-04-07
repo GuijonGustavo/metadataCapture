@@ -177,17 +177,6 @@ input[type="submit"]{
   cursor: pointer;
 }
 
-
-.formulario_zipear input[type="submit"]{
-  margin-left:400px;
-  margin-top:45px;
-  position:relative;
-  z-index:2;
-  cursor: pointer;
-}
-
-
-
 input, textarea, select, button {
   font-size: 100%;
   font-family: inherit;
@@ -396,4 +385,4 @@ form { display: block; margin: 20px auto; background: #eee; border-radius: 10px;
 
 .bar_zipear { background-color: #B4F5B4; width:0%; height:20px; border-radius: 3px; }
 .percent_zipear { position:absolute; display:inline-block; top:3px; left:48%; }
-.progress_zipear { position:relative; width:800px; border: 1px solid #ddd; padding: 1px; border-radius: 3px; }
+.progress_zipear { position:relative; width:400px; border: 1px solid #ddd; padding: 1px; border-radius: 3px; }

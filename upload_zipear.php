@@ -1,8 +1,29 @@
 <?php
+session_start();
 
+$nom = $_SESSION['nom'];
+$nom .= ".zip";
 
 $files_zipear = $_FILES['archivo_zipear']['name'];
 $tipoFile = $_FILES['archivo_zipear']['type'];
+
+
+$j = "El archivo " . $files_zipear . "es distinto a : " . $nom . "No puedes continuar";
+$k =  "El archivo " . $files_zipear . "es igual a : " . $nom . "puedes continuar";
+
+
+
+
+if(!($nom == $files_zipear))
+    {
+                    echo "<script type=\"text/javascript\">alert(\"$j\");</script>";
+}
+
+else{
+                    echo "<script type=\"text/javascript\">alert(\"$k\");</script>"; 
+}
+
+
 
 
     $extension = end(explode(".", $_FILES['archivo_zipear']['name']));
